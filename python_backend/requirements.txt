@@ -1,7 +1,8 @@
 fastapi
-uvicorn
+uvicorn[standard]
 jinja2
 pymupdf
 pandas
 sentence-transformers
 google-generativeai
+python-multipart
