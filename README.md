@@ -19,7 +19,8 @@ The **GenAI Resume Master** is an **AI-powered resume analyzer** that:
 ---
 
 ## 🎨 UI Preview  
-![Royal Gold UI](https://via.placeholder.com/1200x600.png?text=Royal+Gold+Resume+Analyzer+UI)
+<img width="1828" height="1093" alt="image" src="https://github.com/user-attachments/assets/b2807954-bb2b-42db-a54b-e1ec583c5435" />
+
 
 ---
 
