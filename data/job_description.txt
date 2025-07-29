@@ -1,0 +1,3 @@
+We are seeking a Data Scientist with experience in Python, SQL, Machine Learning, NLP, and AWS. 
+The ideal candidate should be proficient in building predictive models, handling large datasets, 
+and working with cloud services. Strong communication and presentation skills are required.

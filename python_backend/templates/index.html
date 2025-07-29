@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>👑 GenAI Resume Master: Royal Gold Edition</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+            color: #fefefe;
+            font-family: 'Segoe UI', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        /* 🌟 Golden Particles Animation */
+        .gold-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+        .particle {
+            position: absolute;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.9) 20%, rgba(255, 215, 0, 0) 70%);
+            border-radius: 50%;
+            width: 6px;
+            height: 6px;
+            opacity: 0.8;
+            animation: float 10s infinite ease-in-out;
+        }
+        @keyframes float {
+            0% { transform: translateY(0) scale(0.6); opacity: 0.8; }
+            50% { transform: translateY(-100vh) scale(1); opacity: 0.3; }
+            100% { transform: translateY(0) scale(0.6); opacity: 0.8; }
+        }
+
+        /* 👑 Rotating Crown Animation */
+        .crown {
+            display: inline-block;
+            margin-right: 10px;
+            animation: rotateCrown 4s linear infinite;
+        }
+        @keyframes rotateCrown {
+            0% { transform: rotate(0deg); }
+            50% { transform: rotate(15deg); }
+            100% { transform: rotate(0deg); }
+        }
+
+        header {
+            background: #0d0d0d;
+            padding: 20px;
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-shadow: 0 0 25px rgba(255, 215, 0, 1);
+            border-bottom: 2px solid #FFD700;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            color: #FFD700;
+        }
+
+        .container { max-width: 1000px; margin-top: 30px; flex: 1; z-index: 1; position: relative; }
+        .card {
+            background: #1c1c1c;
+            border: 2px solid #FFD700;
+            border-radius: 12px;
+            box-shadow: 0 0 25px rgba(255, 215, 0, 0.6);
+            padding: 20px;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+        label { font-weight: bold; color: #FFD700; }
+        input, textarea {
+            background: #2c2c2c;
+            border: 1px solid #FFD700;
+            color: #fff;
+        }
+        input:focus, textarea:focus {
+            border-color: #FFD700;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.9);
+            outline: none;
+        }
+        .btn-gold {
+            background: linear-gradient(145deg, #FFD700, #e6c200);
+            border: none;
+            color: #000;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 12px rgba(255, 215, 0, 0.7);
+        }
+        .btn-gold:hover {
+            background: linear-gradient(145deg, #e6c200, #FFD700);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 1);
+            transform: scale(1.05);
+        }
+        .spinner-border { display: none; color: #FFD700; }
+
+        /* ===================== TABLE FIX ===================== */
+        table { margin-top: 20px; width: 100%; border-collapse: collapse; }
+        th {
+            background: #FFD700;
+            color: #000;
+            font-weight: bold;
+            text-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
+            border: 1px solid #FFD700;
+            text-align: center;
+            padding: 10px;
+        }
+        td {
+            background: #111 !important;
+            border: 1px solid #FFD700;
+            height: 120px;
+            padding: 0 !important;
+            color: #fff !important;
+        }
+
+        /* Make every cell look like AI Feedback */
+        td .feedback-card {
+            width: 100%;
+            height: 100%;
+            background: #222;
+            border-left: 4px solid #FFD700;
+            padding: 12px;
+            margin: 0;
+            font-size: 0.95rem;
+            border-radius: 4px;
+            color: #fefefe;
+            line-height: 1.6;
+            white-space: pre-wrap;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow-y: auto;
+        }
+
+        /* Badges */
+        .badge-high { background-color: #FFD700; color: #000; font-weight: bold; }
+        .badge-mid { background-color: #ffbf00; color: #000; font-weight: bold; }
+        .badge-low { background-color: #b8860b; color: #fff; font-weight: bold; }
+
+        footer {
+            background: #0d0d0d;
+            text-align: center;
+            padding: 10px;
+            font-size: 0.9rem;
+            border-top: 2px solid #FFD700;
+            color: #FFD700;
+            text-shadow: 0 0 8px rgba(255, 215, 0, 1);
+            z-index: 1;
+            position: relative;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <!-- ✨ Animated Golden Particles -->
+    <div class="gold-particles">
+        <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+        <div class="particle" style="left: 25%; animation-delay: 2s;"></div>
+        <div class="particle" style="left: 40%; animation-delay: 4s;"></div>
+        <div class="particle" style="left: 60%; animation-delay: 1s;"></div>
+        <div class="particle" style="left: 75%; animation-delay: 3s;"></div>
+        <div class="particle" style="left: 90%; animation-delay: 5s;"></div>
+    </div>
+
+    <!-- 👑 Header -->
+    <header>
+        <span class="crown">👑</span> GenAI Resume Master: Royal Gold Edition
+    </header>
+
+    <div class="container">
+        <div class="card">
+            <form method="post" action="/analyze" enctype="multipart/form-data" id="analyzeForm">
+                <div class="mb-3">
+                    <label class="form-label">📂 Upload Resumes (PDF):</label>
+                    <input type="file" class="form-control" name="resumes" accept=".pdf" multiple required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">📜 Paste Job Description:</label>
+                    <textarea class="form-control" name="job_description" rows="5" placeholder="Paste job description here..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-gold w-100">✨ Analyze with Royal Power</button>
+                <div class="text-center mt-3">
+                    <div class="spinner-border" role="status" id="loadingSpinner"></div>
+                </div>
+            </form>
+        </div>
+
+        {% if error %}
+        <div class="alert alert-danger mt-4 text-center">{{ error }}</div>
+        {% endif %}
+
+        {% if results %}
+        <div class="card mt-4">
+            <h3 class="text-center mb-3" style="color:#FFD700;">Analysis Results</h3>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped text-center">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Match Score</th>
+                            <th>Matched Keywords</th>
+                            <th>Missing Keywords</th>
+                            <th>AI Feedback</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for res in results %}
+                        <tr>
+                            <td><div class="feedback-card">{{ res.name or "N/A" }}</div></td>
+                            <td>
+                                <div class="feedback-card">
+                                    {% if res.score >= 80 %}
+                                        <span class="badge badge-high">{{ res.score }}%</span>
+                                    {% elif res.score >= 50 %}
+                                        <span class="badge badge-mid">{{ res.score }}%</span>
+                                    {% else %}
+                                        <span class="badge badge-low">{{ res.score }}%</span>
+                                    {% endif %}
+                                </div>
+                            </td>
+                            <td><div class="feedback-card">{{ res.matched or "None" }}</div></td>
+                            <td><div class="feedback-card">{{ res.missing or "None" }}</div></td>
+                            <td><div class="feedback-card">{{ res.feedback }}</div></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+    <footer>👑 Powered by King AI - Pure Gold Edition ✨</footer>
+
+    <script>
+        const form = document.getElementById("analyzeForm");
+        const spinner = document.getElementById("loadingSpinner");
+        form.addEventListener("submit", () => { spinner.style.display = "inline-block"; });
+    </script>
+</body>
+</html>
